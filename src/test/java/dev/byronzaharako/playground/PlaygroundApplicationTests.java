@@ -39,4 +39,17 @@ class PlaygroundApplicationTests {
 
     }
 
+
+    @Test
+    void testRootEndpoint() throws Exception {
+        mockMvc.perform(get("/")
+           .accept("application/json;charset=UTF-8")
+		)
+			.andDo(print())
+           .andExpect(status().isOk())
+           .andExpect(content().contentType("application/json;charset=UTF-8"))
+		   .andExpect(content().string("root"));
+
+    }
+
 }
