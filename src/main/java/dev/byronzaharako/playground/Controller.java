@@ -12,5 +12,10 @@ public class Controller {
         return ResponseEntity.ok().body("hello world!");
     }
 
+    @GetMapping
+    public ResponseEntity<String> rootEndpoint() {
+        return ResponseEntity.ok().body("root");
+    }
+
 
 }
