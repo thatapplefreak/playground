@@ -9,7 +9,7 @@
 	</parent>
 	<groupId>dev.byronzaharako</groupId>
 	<artifactId>playground</artifactId>
-	<version>0.0.3-update_spring_boot-SNAPSHOT</version>
+	<version>0.0.3-SNAPSHOT</version>
 	<name>playground</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
