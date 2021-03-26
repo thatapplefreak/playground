@@ -9,7 +9,7 @@
 	</parent>
 	<groupId>dev.byronzaharako</groupId>
 	<artifactId>playground</artifactId>
-	<version>0.0.3</version>
+	<version>0.0.4</version>
 	<name>playground</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
@@ -74,7 +74,7 @@
 						<enabled>true</enabled>
 					</layers>
 					<image>
-						<name>docker.io/thatapplefreak/${project.artifactId}:${project.version}</name>
+						<name>docker.pkg.github.com/thatapplefreak/playground/${project.artifactId}:${project.version}</name>
 					</image>
 					<excludes>
 						<exclude>
@@ -99,7 +99,7 @@
 							<executable>docker</executable>
 							<arguments>
 								<argument>push</argument>
-								<argument>docker.io/thatapplefreak/${project.artifactId}:${project.version}</argument>
+								<argument>docker.pkg.github.com/thatapplefreak/playground/${project.artifactId}:${project.version}</argument>
 							</arguments>
 						</configuration>
 					</execution>
@@ -159,14 +159,10 @@
 
 	<distributionManagement>
 		<repository>
-			<id>central</id>
-			<name>troverepo-releases</name>
-			<url>https://troverepo.jfrog.io/troverepo/libs-release-local</url>
+		  <id>github</id>
+		  <name>GitHub thatapplefreak Apache Maven Packages</name>
+		  <url>https://maven.pkg.github.com/thatapplefreak/playground</url>
 		</repository>
-		<snapshotRepository>
-			<id>snapshots</id>
-			<url>https://troverepo.jfrog.io/troverepo/libs-snapshot-local</url>
-		</snapshotRepository>
-	</distributionManagement>
+	 </distributionManagement>
 
 </project>
