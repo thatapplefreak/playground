@@ -5,7 +5,7 @@ on:
 
 
 jobs:
-  build:
+  pipeline:
     runs-on: ubuntu-latest
 
     steps:
@@ -16,11 +16,17 @@ jobs:
         java-version: 11
         server-id: github
         settings-path: ${{ github.workspace }}
+    - name: Login to DockerHub
+      uses: docker/login-action@v1 
+      with:
+        registry: docker.pkg.github.com
+        username: ${{ github.repository_owner }}
+        password: ${{ github.token }}
 
     - name: Test
       run: mvn test --file pom.xml
 
-    - name: Publish to GitHub Packages Apache Maven
+    - name: Deploy
       run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml
       env:
         GITHUB_TOKEN: ${{ github.token }}
