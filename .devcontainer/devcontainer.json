@@ -26,7 +26,9 @@
 		"ms-vsliveshare.vsliveshare-audio",
 		"gabrielbb.vscode-lombok",
 		"sonarsource.sonarlint-vscode",
-		"pivotal.vscode-boot-dev-pack"
+		"pivotal.vscode-boot-dev-pack",
+		"mtxr.sqltools",
+		"mtxr.sqltools-driver-pg"
 	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
