@@ -27,6 +27,20 @@ jobs:
       run: mvn test --file pom.xml
 
     - name: Deploy
-      run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml -DskipTests
+      run: |
+        mvn deploy -s $GITHUB_WORKSPACE/settings.xml -DskipTests
+
+        docker_prefix=$(mvn help:evaluate -Dexpression=docker.image.prefix -q -DforceStdout)
+        artifactId=$(mvn help:evaluate -Dexpression=project.parent.artifactId -q -DforceStdout)
+        version=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
+        BRANCH_NAME=$(echo $GITHUB_REF | cut -d'/' -f 3)
+        GIT_SHA_SHORT=$(echo $GITHUB_SHA | cut -c1-7)
+        TS = $(date +%s)
+
+        docker_semver_tag="$docker_prefix/$artifactId:$version"
+        docker_canonical_tag="$docker_prefix/$artifactId:$BRANCH_NAME-$GIT_SHA_SHORT-$TS"
+    
+        docker tag $docker_semver_tag $docker_canonical_tag
+        docker push $docker_canonical_tag
       env:
         GITHUB_TOKEN: ${{ github.token }}

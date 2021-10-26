@@ -1,6 +1,4 @@
-create extension if not exists "uuid-ossp";
-
 create table public.person (
-    id uuid not null default uuid_generate_v4(),
+    id uuid not null default random_uuid(),
     "name" text not null
 );
